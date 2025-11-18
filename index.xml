@@ -480,9 +480,7 @@ font-style: inherit;">slice_head</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">n =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">15</span>)  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Top 15 only</span></span>
+font-style: inherit;">15</span>)</span>
 <span id="cb4-8"></span>
 <span id="cb4-9"><span class="fu" style="color: #4758AB;
 background-color: null;
