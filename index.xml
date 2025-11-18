@@ -181,7 +181,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div></div>
 </div>
 </div>
 </div>
-<p>Week by week, season by season, the numbers climb relentlessly. What’s striking isn’t just that injuries happe, it’s how consistently they accumulate throughout every season. By Week 5, teams are already dealing with dozens of missed games. By Week 10, that number has typically doubled. And by the time playoff rosters are set, most seasons have seen well over 1,000 total missed games lost to injury.</p>
+<p>Week by week, season by season, the numbers climb relentlessly. What’s striking isn’t just that injuries happen, it’s how consistently they accumulate throughout every season. By Week 5, teams are already dealing with dozens of missed games. By Week 10, that number has typically doubled. And by the time playoff rosters are set, most seasons have seen well over 1,000 total missed games lost to injury.</p>
 <p>The pattern is remarkably consistent across all seven seasons. There’s no “fluky” year where injuries suddenly spiked or mysteriously disappeared. Instead, we see the same grinding accumulation year after year, suggesting that high injury rates are baked into the modern NFL.</p>
 <p>The 2020 season, played during COVID-19 with altered off season programs, actually doesn’t look dramatically different from other years, which is surprising. Many expected the shortened training camp and lack of preseason games to lead to more injuries, but the data doesn’t bear that out.</p>
 <p>But the real question is: are things getting worse over time?</p>
@@ -414,10 +414,6 @@ font-style: inherit;">+</span></span>
 background-color: null;
 font-style: inherit;">theme_light</span>()</span></code></pre></div></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-ℹ Please use `linewidth` instead.</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -434,12 +430,12 @@ font-style: inherit;">theme_light</span>()</span></code></pre></div></div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">injury_types_out <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">injury_types_out <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> injuries <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb5-2">  <span class="fu" style="color: #4758AB;
+<span id="cb4-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">filter</span>(game_type <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -448,7 +444,7 @@ background-color: null;
 font-style: inherit;">"REG"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb5-3">  <span class="fu" style="color: #4758AB;
+<span id="cb4-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">filter</span>(report_status <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -457,7 +453,7 @@ background-color: null;
 font-style: inherit;">"Out"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb5-4">  <span class="fu" style="color: #4758AB;
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">filter</span>(<span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -466,19 +462,19 @@ background-color: null;
 font-style: inherit;">is.na</span>(report_primary_injury)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb5-5">  <span class="fu" style="color: #4758AB;
+<span id="cb4-5">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">count</span>(report_primary_injury) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb5-6">  <span class="fu" style="color: #4758AB;
+<span id="cb4-6">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">arrange</span>(<span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">desc</span>(n)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb5-7">  <span class="fu" style="color: #4758AB;
+<span id="cb4-7">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">slice_head</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -487,8 +483,8 @@ background-color: null;
 font-style: inherit;">15</span>)  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Top 15 only</span></span>
-<span id="cb5-8"></span>
-<span id="cb5-9"><span class="fu" style="color: #4758AB;
+<span id="cb4-8"></span>
+<span id="cb4-9"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(injury_types_out, <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -501,7 +497,7 @@ background-color: null;
 font-style: inherit;">y=</span>n)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb5-10">  <span class="fu" style="color: #4758AB;
+<span id="cb4-10">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_col</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -510,33 +506,33 @@ background-color: null;
 font-style: inherit;">"darkred"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb5-11">  <span class="fu" style="color: #4758AB;
+<span id="cb4-11">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">coord_flip</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb5-12">  <span class="fu" style="color: #4758AB;
+<span id="cb4-12">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">labs</span>(</span>
-<span id="cb5-13">    <span class="at" style="color: #657422;
+<span id="cb4-13">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Most Common Injuries Leading to Missed Games (2018-2024)"</span>,</span>
-<span id="cb5-14">    <span class="at" style="color: #657422;
+<span id="cb4-14">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Injury Type"</span>,</span>
-<span id="cb5-15">    <span class="at" style="color: #657422;
+<span id="cb4-15">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Games Missed"</span></span>
-<span id="cb5-16">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb4-16">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb5-17">  <span class="fu" style="color: #4758AB;
+<span id="cb4-17">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_light</span>()</span></code></pre></div></div>
 </details>
@@ -550,7 +546,7 @@ font-style: inherit;">theme_light</span>()</span></code></pre></div></div>
 </div>
 <p>Knee injuries dominate the injury report, accounting for more missed games than any other single injury type by a significant margin. This isn’t surprising considering knees bear enormous stress during cutting, jumping, and absorbing contact. ACL, MCL, and meniscus tears can end seasons in an instant.</p>
 <p>Ankles come in second, a joint that takes punishment on every play. Ankle sprains range from minor nuisances to severe high-ankle injuries that can sideline players for weeks to months.</p>
-<p>Hamstrings com in third, reflecting the explosive speed and acceleration modern NFL players generate. These injuries often linger and recur, keeping players sidelined for weeks even when they’re not season-ending.</p>
+<p>Hamstrings come in third, reflecting the explosive speed and acceleration modern NFL players generate. These injuries often linger and recur, keeping players sidelined for weeks even when they’re not season-ending.</p>
 <p>Concussions, while lower on the list by raw numbers, represent one of the most serious concerns for player safety. The league has made concussion protocol a priority, but head injuries remain an unavoidable reality in a collision sport.</p>
 <p>Foot, shoulder, hip, and calf injuries round out the top causes. These aren’t freak accidents, but they’re the result of the physical toll the game takes on players’ bodies week after week. The human body simply wasn’t designed to absorb the forces generated when 300-pound linemen collide at full speed, or when defensive backs try to tackle running backs moving at 20 mph.</p>
 <p>Notably, many of these injuries like hamstrings, calves, backs—are soft tissue injuries that can sometimes be linked to training, conditioning, and workload management. This suggests there may be room for teams to improve their injury prevention programs, though the data shows that even the best-run organizations can’t escape injury problems entirely.</p>
@@ -558,17 +554,17 @@ font-style: inherit;">theme_light</span>()</span></code></pre></div></div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">pos <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">pos <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> injuries <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb6-2">  <span class="fu" style="color: #4758AB;
+<span id="cb5-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">group_by</span>(position) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb6-3">  <span class="fu" style="color: #4758AB;
+<span id="cb5-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summarize</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -583,13 +579,13 @@ background-color: null;
 font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">TRUE</span>))</span>
-<span id="cb6-4"></span>
-<span id="cb6-5"><span class="fu" style="color: #4758AB;
+<span id="cb5-4"></span>
+<span id="cb5-5"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb6-6">  <span class="fu" style="color: #4758AB;
+<span id="cb5-6">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_bar</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -604,28 +600,28 @@ background-color: null;
 font-style: inherit;">weight =</span> Out))<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb6-7">  <span class="fu" style="color: #4758AB;
+<span id="cb5-7">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">labs</span>(</span>
-<span id="cb6-8">    <span class="at" style="color: #657422;
+<span id="cb5-8">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Amount of Games Missed Per Position (2018-2024)"</span>,</span>
-<span id="cb6-9">    <span class="at" style="color: #657422;
+<span id="cb5-9">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Position"</span>,</span>
-<span id="cb6-10">    <span class="at" style="color: #657422;
+<span id="cb5-10">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Games Missed"</span></span>
-<span id="cb6-11">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb5-11">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb6-12">  <span class="fu" style="color: #4758AB;
+<span id="cb5-12">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_light</span>()</span></code></pre></div></div>
 </details>
@@ -639,6 +635,7 @@ font-style: inherit;">theme_light</span>()</span></code></pre></div></div>
 </div>
 <p>Corner back, wide receiver, and line backer are the top three most injured position by a long shot. It’s no coincidence that the fastest playing players and the ones who tend to take the blunt of each and every hit are the ones falling to these lower body and head injuries.</p>
 <p>While the NFL has created rules and invented new technologies to prevent injuries and keep players in the game, it seems they are being out paced by how sped up the league is getting.</p>
+<p>The numbers don’t lie, NFL injuries are trending upward, and the league’s countermeasures aren’t working. As the game gets faster and more physical, players’ bodies are paying the price. Rule changes and medical advances have helped, but they can’t overcome basic physics. When elite athletes weighing 250 pounds collide at full speed, something has to give. Until the NFL makes more dramatic changes, things like shorter seasons (which will never happen), mandatory rest periods (like an extra bye week), or fundamental alterations to how the game is played, injuries will continue to climb. For now, fans should get used to seeing their favorite players in street clothes on Sunday. Because in the modern NFL, the question isn’t if a star will get injured, but when.</p>
 
 
 
