@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Truman Wood">
-<meta name="dcterms.date" content="2025-11-19">
+<meta name="dcterms.date" content="2025-11-17">
 
-<title>Is There a New Injury Trend in the NFL? – The Best Sports Blog</title>
+<title>Are NFL Injuries Getting Worse? – The Best Sports Blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-251603f34fb100524ce6c94bd8510ba7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-1d4f84655f446305ac42a8f1abcf7405.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -154,7 +154,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Is There a New Injury Trend in the NFL?</h1>
+      <h1 class="title">Are NFL Injuries Getting Worse?</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">nfl</div>
                 <div class="quarto-category">football</div>
@@ -176,7 +176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">November 19, 2025</p>
+        <p class="date">November 17, 2025</p>
       </div>
     </div>
     
@@ -195,7 +195,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>I don’t like injuries in the NFL. I REALY don’t like it when its my team.</p>
+<p>The NFL has a problem, and it’s getting harder to ignore. Every Sunday, fans watch as star players limp off the field, backup quarterbacks take the helm, and fantasy football lineups crumble. Over the past few seasons, it feels like injuries have become more frequent and more devastating.</p>
+<p>But is this just recency bias, or are injuries actually trending upward?</p>
+<p>Let’s look at the numbers.</p>
+<p>Using injury report data from the past seven seasons (2018-2024), we can track exactly how many games players have missed due to injury during the regular season. The results paint a concerning picture for the league and suggest that the problem isn’t going away anytime soon.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -216,14 +219,86 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nflreadr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'nflreadr' was built under R version 4.4.3</code></pre>
 </div>
-<p>blah lbah blah blajh</p>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>injuries <span class="ot">&lt;-</span> <span class="fu">load_injuries</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">seasons =</span> <span class="dv">2018</span><span class="sc">:</span><span class="dv">2024</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">file_type =</span> <span class="fu">getOption</span>(<span class="st">"nflreadr.prefer"</span>, <span class="at">default =</span> <span class="st">"rds"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(game_type <span class="sc">==</span> <span class="st">"REG"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> injuries <span class="sc">|&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(season, week, position) <span class="sc">|&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Out =</span> <span class="fu">sum</span>(report_status <span class="sc">==</span> <span class="st">"Out"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.groups =</span> <span class="st">'drop'</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(season) <span class="sc">|&gt;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(week) <span class="sc">|&gt;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cumulative_out =</span> <span class="fu">cumsum</span>(Out))</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_step</span>(<span class="at">data=</span>out, <span class="fu">aes</span>(<span class="at">x=</span>week, <span class="at">y=</span>cumulative_out)) <span class="sc">+</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>season) <span class="sc">+</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Cumulative Injuries by Season"</span>,</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Week"</span>,</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Cumulative Outs"</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Week by week, season by season, the numbers climb relentlessly. What’s striking isn’t just that injuries happe, it’s how consistently they accumulate throughout every season. By Week 5, teams are already dealing with dozens of missed games. By Week 10, that number has typically doubled. And by the time playoff rosters are set, most seasons have seen well over 1,000 total missed games lost to injury.</p>
+<p>The pattern is remarkably consistent across all seven seasons. There’s no “fluky” year where injuries suddenly spiked or mysteriously disappeared. Instead, we see the same grinding accumulation year after year, suggesting that high injury rates are baked into the modern NFL.</p>
+<p>The 2020 season, played during COVID-19 with altered off season programs, actually doesn’t look dramatically different from other years, which is surprising. Many expected the shortened training camp and lack of preseason games to lead to more injuries, but the data doesn’t bear that out.</p>
+<p>But the real question is: are things getting worse over time?</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> disp, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>team_injuries_full <span class="ot">&lt;-</span> injuries <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(game_type <span class="sc">==</span> <span class="st">"REG"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">team =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    team <span class="sc">==</span> <span class="st">"OAK"</span> <span class="sc">~</span> <span class="st">"LV"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    team <span class="sc">==</span> <span class="st">"SD"</span> <span class="sc">~</span> <span class="st">"LAC"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> team</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">|&gt;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(season, team) <span class="sc">|&gt;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_outs =</span> <span class="fu">sum</span>(report_status <span class="sc">==</span> <span class="st">"Out"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.groups =</span> <span class="st">'drop'</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>avg_injuries <span class="ot">&lt;-</span> team_injuries_full <span class="sc">|&gt;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(season) <span class="sc">|&gt;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_outs =</span> <span class="fu">mean</span>(total_outs))</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>team_injuries_full, <span class="fu">aes</span>(<span class="at">x=</span>season, <span class="at">y=</span>total_outs, <span class="at">group=</span>team), </span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">color=</span><span class="st">"gray80"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">size=</span><span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data=</span>avg_injuries, <span class="fu">aes</span>(<span class="at">x=</span>season, <span class="at">y=</span>avg_outs), </span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>            <span class="at">size=</span><span class="fl">1.5</span>, <span class="at">color=</span><span class="st">"darkred"</span>) <span class="sc">+</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>avg_injuries, <span class="fu">aes</span>(<span class="at">x=</span>season, <span class="at">y=</span>avg_outs), </span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>             <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">"darkred"</span>) <span class="sc">+</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data=</span>avg_injuries, <span class="fu">aes</span>(<span class="at">x=</span>season, <span class="at">y=</span>avg_outs, <span class="at">label=</span><span class="fu">round</span>(avg_outs, <span class="dv">1</span>)), </span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>            <span class="at">vjust=</span><span class="sc">-</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Average Missed Games Due To Injury Per Season"</span>,</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Individual teams in gray, league average in red"</span>,</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Season"</span>,</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Missed Games"</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -232,6 +307,73 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p>The answer is a qualified yes. Looking at the league-wide average, we can see that teams are losing more players to injury now than they were six years ago. In 2018, the average team saw 28.3 missed games due to injury. By 2024, that number had climbed to 33.6.</p>
+<p>That might not sound dramatic, just over five additional games per team. But consider what it means at scale. Every team in the league is dealing with roughly five more missed games by players compared to 2018. Multiply that across 32 teams and 18 weeks, and you’re looking at hundreds of additional missed games league-wide. That’s entire rosters’ worth of players sitting out.</p>
+<p>The peak came last season, further backing this claim, when teams averaged 34.1 missed games reaching nearly six more games than in 2018. While the climb has been gradual and slow, we are still seeing that increase.</p>
+<p>The individual team lines (grey) tell an even more volatile story. Some franchises have seen injury counts spike dramatically in certain years, with some teams losing 50+ games to injury in a single season. Other teams have managed to stay relatively healthy, sometimes dipping below 20 missed games.</p>
+<p>So, what’s the deal?</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>injury_types_out <span class="ot">&lt;-</span> injuries <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(game_type <span class="sc">==</span> <span class="st">"REG"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(report_status <span class="sc">==</span> <span class="st">"Out"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(report_primary_injury)) <span class="sc">|&gt;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(report_primary_injury) <span class="sc">|&gt;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">|&gt;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">15</span>)  <span class="co"># Top 15 only</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(injury_types_out, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(report_primary_injury, n), <span class="at">y=</span>n)) <span class="sc">+</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">"darkred"</span>) <span class="sc">+</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Most Common Injuries Leading to Missed Games (2018-2024)"</span>,</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Injury Type"</span>,</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Games Missed"</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Knee injuries dominate the injury report, accounting for more missed games than any other single injury type by a significant margin. This isn’t surprising considering knees bear enormous stress during cutting, jumping, and absorbing contact. ACL, MCL, and meniscus tears can end seasons in an instant.</p>
+<p>Ankles come in second, a joint that takes punishment on every play. Ankle sprains range from minor nuisances to severe high-ankle injuries that can sideline players for weeks to months.</p>
+<p>Hamstrings com in third, reflecting the explosive speed and acceleration modern NFL players generate. These injuries often linger and recur, keeping players sidelined for weeks even when they’re not season-ending.</p>
+<p>Concussions, while lower on the list by raw numbers, represent one of the most serious concerns for player safety. The league has made concussion protocol a priority, but head injuries remain an unavoidable reality in a collision sport.</p>
+<p>Foot, shoulder, hip, and calf injuries round out the top causes. These aren’t freak accidents, but they’re the result of the physical toll the game takes on players’ bodies week after week. The human body simply wasn’t designed to absorb the forces generated when 300-pound linemen collide at full speed, or when defensive backs try to tackle running backs moving at 20 mph.</p>
+<p>Notably, many of these injuries like hamstrings, calves, backs—are soft tissue injuries that can sometimes be linked to training, conditioning, and workload management. This suggests there may be room for teams to improve their injury prevention programs, though the data shows that even the best-run organizations can’t escape injury problems entirely.</p>
+<p>These injuries are resulting from how fast the NFL has gotten.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pos <span class="ot">&lt;-</span> injuries <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(position) <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Out =</span> <span class="fu">sum</span>(report_status <span class="sc">==</span> <span class="st">"Out"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data =</span> pos, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(position, Out), <span class="at">weight =</span> Out))<span class="sc">+</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Amount of Games Missed Per Position"</span>,</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Position"</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Games Missed"</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Corner back, wide receiver, and line backer are the top three most injured position by a long shot. It’s no coincidence that the fastest playing players and the ones who tend to take the blunt of each and every hit are the ones falling to these lower body and head injuries.</p>
+<p>While the NFL has created rules and invented new technologies to prevent injuries and keep players in the game, it seems they are being out paced by how sped up the league is getting.</p>
 
 
 
