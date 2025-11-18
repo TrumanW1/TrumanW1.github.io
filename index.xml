@@ -21,6 +21,17 @@
 
 
 
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(nflreadr)</span></code></pre></div></div>
+</details>
+</div>
 <p>The NFL has a problem, and it’s getting harder to ignore. Every Sunday, fans watch as star players limp off the field, backup quarterbacks take the helm, and fantasy football lineups crumble. Over the past few seasons, it feels like injuries have become more frequent and more devastating.</p>
 <p>But is this just recency bias, or are injuries actually trending upward?</p>
 <p>Let’s look at the numbers.</p>
@@ -28,42 +39,12 @@
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(tidyverse)</span></code></pre></div></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.4.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   4.0.0     ✔ tibble    3.2.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.4     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(nflreadr)</span></code></pre></div></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'nflreadr' was built under R version 4.4.3</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">injuries <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">injuries <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">load_injuries</span>(</span>
-<span id="cb6-2">  <span class="at" style="color: #657422;
+<span id="cb2-2">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">seasons =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
@@ -72,7 +53,7 @@ background-color: null;
 font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2024</span>,</span>
-<span id="cb6-3">  <span class="at" style="color: #657422;
+<span id="cb2-3">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">file_type =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -83,27 +64,27 @@ background-color: null;
 font-style: inherit;">default =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"rds"</span>)</span>
-<span id="cb6-4">) <span class="sc" style="color: #5E5E5E;
+<span id="cb2-4">) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb6-5">  <span class="fu" style="color: #4758AB;
+<span id="cb2-5">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">filter</span>(game_type <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">==</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"REG"</span>)</span>
-<span id="cb6-6">out <span class="ot" style="color: #003B4F;
+<span id="cb2-6">out <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> injuries <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb6-7">  <span class="fu" style="color: #4758AB;
+<span id="cb2-7">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">group_by</span>(season, week, position) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb6-8">  <span class="fu" style="color: #4758AB;
+<span id="cb2-8">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summarize</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -124,30 +105,30 @@ background-color: null;
 font-style: inherit;">'drop'</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb6-9">  <span class="fu" style="color: #4758AB;
+<span id="cb2-9">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">group_by</span>(season) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb6-10">  <span class="fu" style="color: #4758AB;
+<span id="cb2-10">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">arrange</span>(week) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb6-11">  <span class="fu" style="color: #4758AB;
+<span id="cb2-11">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">cumulative_out =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">cumsum</span>(Out))</span>
-<span id="cb6-12"></span>
-<span id="cb6-13"><span class="fu" style="color: #4758AB;
+<span id="cb2-12"></span>
+<span id="cb2-13"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> </span>
-<span id="cb6-14">  <span class="fu" style="color: #4758AB;
+<span id="cb2-14">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_step</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -160,42 +141,42 @@ background-color: null;
 font-style: inherit;">y=</span>cumulative_out)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb6-15">  <span class="fu" style="color: #4758AB;
+<span id="cb2-15">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">~</span>season) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb6-16">  <span class="fu" style="color: #4758AB;
+<span id="cb2-16">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">labs</span>(</span>
-<span id="cb6-17">    <span class="at" style="color: #657422;
+<span id="cb2-17">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Cumulative Injuries by Season"</span>,</span>
-<span id="cb6-18">    <span class="at" style="color: #657422;
+<span id="cb2-18">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Week"</span>,</span>
-<span id="cb6-19">    <span class="at" style="color: #657422;
+<span id="cb2-19">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Cumulative Outs"</span></span>
-<span id="cb6-20">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb2-20">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb6-21">  <span class="fu" style="color: #4758AB;
+<span id="cb2-21">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>()</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://your-website-url.example.com/posts/nfl-team-injuries-compared-by-season/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://your-website-url.example.com/posts/nfl-team-injuries-compared-by-season/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -207,12 +188,12 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div></div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">team_injuries_full <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">team_injuries_full <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> injuries <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-2">  <span class="fu" style="color: #4758AB;
+<span id="cb3-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">filter</span>(game_type <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -221,14 +202,14 @@ background-color: null;
 font-style: inherit;">"REG"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-3">  <span class="fu" style="color: #4758AB;
+<span id="cb3-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">team =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">case_when</span>(</span>
-<span id="cb7-4">    team <span class="sc" style="color: #5E5E5E;
+<span id="cb3-4">    team <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">==</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -237,7 +218,7 @@ background-color: null;
 font-style: inherit;">~</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"LV"</span>,</span>
-<span id="cb7-5">    team <span class="sc" style="color: #5E5E5E;
+<span id="cb3-5">    team <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">==</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -246,20 +227,20 @@ background-color: null;
 font-style: inherit;">~</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"LAC"</span>,</span>
-<span id="cb7-6">    <span class="cn" style="color: #8f5902;
+<span id="cb3-6">    <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">TRUE</span> <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">~</span> team</span>
-<span id="cb7-7">  )) <span class="sc" style="color: #5E5E5E;
+<span id="cb3-7">  )) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-8">  <span class="fu" style="color: #4758AB;
+<span id="cb3-8">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">group_by</span>(season, team) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-9">  <span class="fu" style="color: #4758AB;
+<span id="cb3-9">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summarize</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -278,30 +259,30 @@ background-color: null;
 font-style: inherit;">.groups =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'drop'</span>)</span>
-<span id="cb7-10">avg_injuries <span class="ot" style="color: #003B4F;
+<span id="cb3-10">avg_injuries <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> team_injuries_full <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-11">  <span class="fu" style="color: #4758AB;
+<span id="cb3-11">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">group_by</span>(season) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb7-12">  <span class="fu" style="color: #4758AB;
+<span id="cb3-12">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summarize</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">avg_outs =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mean</span>(total_outs))</span>
-<span id="cb7-13"></span>
-<span id="cb7-14"><span class="fu" style="color: #4758AB;
+<span id="cb3-13"></span>
+<span id="cb3-14"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb7-15">  <span class="fu" style="color: #4758AB;
+<span id="cb3-15">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_line</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -314,7 +295,7 @@ background-color: null;
 font-style: inherit;">y=</span>total_outs, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">group=</span>team), </span>
-<span id="cb7-16">            <span class="at" style="color: #657422;
+<span id="cb3-16">            <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">color=</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -329,7 +310,7 @@ background-color: null;
 font-style: inherit;">0.8</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb7-17">  <span class="fu" style="color: #4758AB;
+<span id="cb3-17">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_line</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -340,7 +321,7 @@ background-color: null;
 font-style: inherit;">x=</span>season, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y=</span>avg_outs), </span>
-<span id="cb7-18">            <span class="at" style="color: #657422;
+<span id="cb3-18">            <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">size=</span><span class="fl" style="color: #AD0000;
 background-color: null;
@@ -351,7 +332,7 @@ background-color: null;
 font-style: inherit;">"darkred"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb7-19">  <span class="fu" style="color: #4758AB;
+<span id="cb3-19">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -362,7 +343,7 @@ background-color: null;
 font-style: inherit;">x=</span>season, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y=</span>avg_outs), </span>
-<span id="cb7-20">             <span class="at" style="color: #657422;
+<span id="cb3-20">             <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">size=</span><span class="dv" style="color: #AD0000;
 background-color: null;
@@ -373,7 +354,7 @@ background-color: null;
 font-style: inherit;">"darkred"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb7-21">  <span class="fu" style="color: #4758AB;
+<span id="cb3-21">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_text</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -390,7 +371,7 @@ background-color: null;
 font-style: inherit;">round</span>(avg_outs, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>)), </span>
-<span id="cb7-22">            <span class="at" style="color: #657422;
+<span id="cb3-22">            <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">vjust=</span><span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -403,33 +384,33 @@ background-color: null;
 font-style: inherit;">4</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb7-23">  <span class="fu" style="color: #4758AB;
+<span id="cb3-23">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">labs</span>(</span>
-<span id="cb7-24">    <span class="at" style="color: #657422;
+<span id="cb3-24">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Average Missed Games Due To Injury Per Season"</span>,</span>
-<span id="cb7-25">    <span class="at" style="color: #657422;
+<span id="cb3-25">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Individual teams in gray, league average in red"</span>,</span>
-<span id="cb7-26">    <span class="at" style="color: #657422;
+<span id="cb3-26">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Season"</span>,</span>
-<span id="cb7-27">    <span class="at" style="color: #657422;
+<span id="cb3-27">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Missed Games"</span></span>
-<span id="cb7-28">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb3-28">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb7-29">  <span class="fu" style="color: #4758AB;
+<span id="cb3-29">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_light</span>()</span></code></pre></div></div>
 </details>
@@ -440,7 +421,7 @@ font-style: inherit;">theme_light</span>()</span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://your-website-url.example.com/posts/nfl-team-injuries-compared-by-season/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://your-website-url.example.com/posts/nfl-team-injuries-compared-by-season/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -453,12 +434,12 @@ font-style: inherit;">theme_light</span>()</span></code></pre></div></div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">injury_types_out <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">injury_types_out <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> injuries <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb9-2">  <span class="fu" style="color: #4758AB;
+<span id="cb5-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">filter</span>(game_type <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -467,7 +448,7 @@ background-color: null;
 font-style: inherit;">"REG"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb9-3">  <span class="fu" style="color: #4758AB;
+<span id="cb5-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">filter</span>(report_status <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -476,7 +457,7 @@ background-color: null;
 font-style: inherit;">"Out"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb9-4">  <span class="fu" style="color: #4758AB;
+<span id="cb5-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">filter</span>(<span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -485,19 +466,19 @@ background-color: null;
 font-style: inherit;">is.na</span>(report_primary_injury)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb9-5">  <span class="fu" style="color: #4758AB;
+<span id="cb5-5">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">count</span>(report_primary_injury) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb9-6">  <span class="fu" style="color: #4758AB;
+<span id="cb5-6">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">arrange</span>(<span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">desc</span>(n)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb9-7">  <span class="fu" style="color: #4758AB;
+<span id="cb5-7">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">slice_head</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -506,8 +487,8 @@ background-color: null;
 font-style: inherit;">15</span>)  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Top 15 only</span></span>
-<span id="cb9-8"></span>
-<span id="cb9-9"><span class="fu" style="color: #4758AB;
+<span id="cb5-8"></span>
+<span id="cb5-9"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(injury_types_out, <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -520,7 +501,7 @@ background-color: null;
 font-style: inherit;">y=</span>n)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb9-10">  <span class="fu" style="color: #4758AB;
+<span id="cb5-10">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_col</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -529,40 +510,40 @@ background-color: null;
 font-style: inherit;">"darkred"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb9-11">  <span class="fu" style="color: #4758AB;
+<span id="cb5-11">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">coord_flip</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb9-12">  <span class="fu" style="color: #4758AB;
+<span id="cb5-12">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">labs</span>(</span>
-<span id="cb9-13">    <span class="at" style="color: #657422;
+<span id="cb5-13">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Most Common Injuries Leading to Missed Games (2018-2024)"</span>,</span>
-<span id="cb9-14">    <span class="at" style="color: #657422;
+<span id="cb5-14">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Injury Type"</span>,</span>
-<span id="cb9-15">    <span class="at" style="color: #657422;
+<span id="cb5-15">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Games Missed"</span></span>
-<span id="cb9-16">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb5-16">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb9-17">  <span class="fu" style="color: #4758AB;
+<span id="cb5-17">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_light</span>()</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://your-website-url.example.com/posts/nfl-team-injuries-compared-by-season/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://your-website-url.example.com/posts/nfl-team-injuries-compared-by-season/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -577,17 +558,17 @@ font-style: inherit;">theme_light</span>()</span></code></pre></div></div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">pos <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">pos <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> injuries <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb10-2">  <span class="fu" style="color: #4758AB;
+<span id="cb6-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">group_by</span>(position) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb10-3">  <span class="fu" style="color: #4758AB;
+<span id="cb6-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summarize</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -602,13 +583,13 @@ background-color: null;
 font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">TRUE</span>))</span>
-<span id="cb10-4"></span>
-<span id="cb10-5"><span class="fu" style="color: #4758AB;
+<span id="cb6-4"></span>
+<span id="cb6-5"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb10-6">  <span class="fu" style="color: #4758AB;
+<span id="cb6-6">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_bar</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -623,35 +604,35 @@ background-color: null;
 font-style: inherit;">weight =</span> Out))<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb10-7">  <span class="fu" style="color: #4758AB;
+<span id="cb6-7">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">labs</span>(</span>
-<span id="cb10-8">    <span class="at" style="color: #657422;
+<span id="cb6-8">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Amount of Games Missed Per Position"</span>,</span>
-<span id="cb10-9">    <span class="at" style="color: #657422;
+font-style: inherit;">"Amount of Games Missed Per Position (2018-2024)"</span>,</span>
+<span id="cb6-9">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Position"</span>,</span>
-<span id="cb10-10">    <span class="at" style="color: #657422;
+<span id="cb6-10">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Games Missed"</span></span>
-<span id="cb10-11">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb6-11">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb10-12">  <span class="fu" style="color: #4758AB;
+<span id="cb6-12">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_light</span>()</span></code></pre></div></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://your-website-url.example.com/posts/nfl-team-injuries-compared-by-season/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://your-website-url.example.com/posts/nfl-team-injuries-compared-by-season/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
